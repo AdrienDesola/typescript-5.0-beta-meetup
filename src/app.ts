@@ -1,8 +1,8 @@
-import express, { NextFunction, type Request, type Response } from 'express'
+import express, { type NextFunction, type Request, type Response } from 'express'
 import * as crypto from 'crypto'
 import { timer } from './decorators/timer'
-import { errorHandler } from "./decorators/errorHandler";
-import { HttpError } from "./HttpError";
+import { errorHandler } from './decorators/errorHandler'
+import { HttpError } from './HttpError'
 const app = express()
 const port = process.env.PORT ?? 3000
 
@@ -45,7 +45,7 @@ class Resources {
   @timer('HTTP THROW')
   @errorHandler()
   alwaysThrow (_req: Request, res: Response, next: NextFunction) {
-    throw new HttpError('this method always throw', 400);
+    throw new HttpError('this method always throw', 400)
     res.statusCode = 204
     res.send()
   }
